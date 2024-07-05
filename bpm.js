@@ -78,7 +78,10 @@ function _rollback(data, info) {
 }
 
 function _formatStringToArrayObject(data) {
-    data.forEach(item => {
+
+    console.log(data)
+
+    // data.forEach(item => {
         if(item.key == 'props') {
             const regex = /\{[^}]*\}/g;
             const matches  = data[0].value.match(regex);
@@ -101,7 +104,7 @@ function _formatStringToArrayObject(data) {
 
             return objectsArray;
         }
-    })
+    // })
 }
 
 function _showViewProps(props) { 
