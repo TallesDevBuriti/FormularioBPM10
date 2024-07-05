@@ -79,4 +79,28 @@ $(document).ready(function () {
         value = value.replace(/^(\d{5})(\d)/, '$1-$2');
         $(this).val(value);
     })
+
+    // $("#box-file").change(function() {
+    //     formatFileToBase64(this.files[0]);
+    // });
+
+    // function formatFileToBase64(fileContent) {
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(fileContent);
+    //     reader.onload = function() {
+    //         console.log(reader.result);
+
+    //         const contentHtml = document.createElement("iframe");
+    //         contentHtml.setAttribute("src", reader.result);
+    //         contentHtml.setAttribute("class", 'w-100 h-100');
+            
+            
+    //         const contentHtmlA = document.querySelector("#btn-download-base64");
+    //         contentHtmlA.setAttribute("href", reader.result);
+    //         contentHtmlA.removeAttribute("class");
+    //         contentHtmlA.setAttribute("class", "btn btn-outline-success d-block pt-2");
+
+    //         document.querySelector("#box-base64").appendChild(contentHtml);
+    //     }
+    // }
 })

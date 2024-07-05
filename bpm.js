@@ -78,31 +78,30 @@ function _rollback(data, info) {
 }
 
 function _formatStringToArrayObject(data) {
-    const regex = /\{[^}]*\}/g;
-    const matches  = data[0].value.match(regex);
+    data.forEach(item => {
+        if(item.key == 'props') {
+            const regex = /\{[^}]*\}/g;
+            const matches  = data[0].value.match(regex);
 
-    const objectsArray = [];
+            const objectsArray = [];
 
-    // Para cada parte encontrada, removemos as chaves e criamos um objeto
-    matches.forEach(match => {
-        // Remover as chaves
-        const cleanMatch = match.slice(1, -1);
-                
-        // Separar as propriedades
-        const properties = cleanMatch.split(', ');
-        const obj = {};
+            matches.forEach(match => {
+                const cleanMatch = match.slice(1, -1);
 
-        // Construir o objeto
-        properties.forEach(property => {
-            const [key, value] = property.split('=');
-            obj[key.trim()] = value.trim();
-        });
+                const properties = cleanMatch.split(', ');
+                const obj = {};
 
-        // Adicionar o objeto ao array
-        objectsArray.push(obj);
-    });
+                properties.forEach(property => {
+                    const [key, value] = property.split('=');
+                    obj[key.trim()] = value.trim();
+                });
 
-    return objectsArray;
+                objectsArray.push(obj);
+            });
+
+            return objectsArray;
+        }
+    })
 }
 
 function _showViewProps(props) { 
@@ -137,8 +136,5 @@ function _showViewProps(props) {
         </div>`;
 
         $('#box-dados-proprietarios').append(customHtml);
-
-        console.log('montou o html')
-        console.log(item)
     });
 }
